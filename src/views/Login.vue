@@ -1,10 +1,19 @@
 <template>
-    <h1>Login</h1>
+  <form-login/>
 </template>
 
-
 <script>
+import FormLogin from '../components/FormLogin.vue';
 export default {
-    name: 'Login'
-}
+  components: { FormLogin },
+  name: "Login",
+
+  beforeCreate() {
+    if (localStorage.getItem("token")) {
+      this.$router.push({
+        name: "Admin",
+      });
+    }
+  },
+};
 </script>

@@ -1,25 +1,38 @@
 <template>
-  <div id="app">
-    <navigation/>
-    <router-view />
-  </div>
+  <v-app>
+    <header
+      v-if="
+        ![
+          'Admin',
+          'Users',
+          'Categories',
+          'Products',
+          'Team',
+          'About',
+          'ListProducts',
+          'Team'
+        ].includes($route.name)
+      "
+    >
+      <navigation />
+    </header>
+    <v-main>
+      <router-view />
+    </v-main>
+    <app-footer />
+  </v-app>
 </template>
 
 <script>
-import Navigation from './components/Navigation.vue'
+import AppFooter from "./components/AppFooter.vue";
+import Navigation from "./components/Navigation.vue";
+
 export default {
-  components: { Navigation },
-  
-}
+  components: { Navigation, AppFooter },
+  name: "App",
+
+  data: () => ({
+    //
+  }),
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-</style>
