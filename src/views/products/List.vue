@@ -23,11 +23,11 @@
 
           <v-card-actions>
             <v-btn
-              color="orange accent-2"
+              color="green accent-4"
               outlined
               block
               @click="(dialog = true), getOneProduct(product)"
-              class="elevation-5"
+              class="elevation-2"
             >
               <v-icon class="xs">mdi-eye</v-icon>
               Ver más...

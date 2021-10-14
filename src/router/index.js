@@ -1,6 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import decode from 'jwt-decode';
 
 Vue.use(VueRouter)
 
@@ -24,17 +25,26 @@ const routes = [{
     children: [{
         path: 'users',
         name: 'Users',
-        component: () => import( /* webpackChunkName: "Users" */ '../views/users/CRUD.vue')
+        component: () => import( /* webpackChunkName: "Users" */ '../views/users/CRUD.vue'),
+        meta: {
+          requiresAdmin: true
+        },
       },
       {
         path: 'categories',
         name: 'Categories',
-        component: () => import( /* webpackChunkName: "Categories" */ '../views/categories/CRUD.vue')
+        component: () => import( /* webpackChunkName: "Categories" */ '../views/categories/CRUD.vue'),
+        meta: {
+          requiresAdmin: true
+        },
       },
       {
         path: 'products',
         name: 'Products',
-        component: () => import( /* webpackChunkName: "Products" */ '../views/products/CRUD.vue')
+        component: () => import( /* webpackChunkName: "Products" */ '../views/products/CRUD.vue'),
+        meta: {
+          requiresAdmin: true
+        },
       },
       {
         path: 'listproducts',
@@ -64,19 +74,28 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    let token = localStorage.getItem('token');
+    let token = decode(localStorage.getItem('token'));
     if (!token) {
       next({
         name: 'Login',
-        //query: {redirect: to.fullPath}
       })
     } else {
-      next();
+      if (to.matched.some(record => record.meta.requiresAdmin)) {
+        if (token["role"] === 'Administrador') {
+          next()
+        } else {
+          next({
+            name: 'Admin'
+          })
+        }
+      } else {
+        next();
+      }
     }
   } else {
     next();
   }
-})
+});
 
 
-export default router
+export default router;

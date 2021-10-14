@@ -54,6 +54,7 @@
                     <v-row>
                       <v-col cols="12" sm="4">
                         <v-text-field
+                          type="number"
                           v-model="category.codeCategory"
                           label="Código de la categoría"
                         ></v-text-field>
@@ -148,7 +149,7 @@ export default {
     dialog: false,
     dialogDelete: false,
     headers: [
-      { text: "ID", value: "_id" },
+      //{ text: "ID", value: "_id" },
       { text: "Código categoría", value: "codeCategory" },
       {
         text: "Nombre categoría",
