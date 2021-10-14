@@ -240,7 +240,7 @@ export default {
             console.log(response);
             this.list();
             this.color = "success";
-            this.text = "El usuario se creó correctamente!";
+            this.text = "El usuario se modificó correctamente!";
             this.snackbar = true;
           })
           .catch((error) => {
@@ -260,6 +260,7 @@ export default {
             state: this.userIndex.state,
           })
           .then((response) => {
+            console.log(this.userIndex._id);
             console.log(response);
             this.list();
             this.color = "success";
@@ -300,11 +301,12 @@ export default {
     },
 
     enabledItemConfirm() {
-      if (this.userIndex.state) {
+      if (this.userIndex.state === 1) {
         //Deshabilitar usuarios (Disabled)
+        console.log(this.userIndex.state);
         axios
           .put('http://localhost:3000/api/users/disabled', {
-            _id: this.userIndex._id,
+            _id: this.userIndex._id
           })
           .then((response) => {
             console.log(response);
@@ -325,7 +327,7 @@ export default {
         //Habilitar usuarios (Enabled)
         axios
           .put('http://localhost:3000/api/users/enabled', {
-            _id: this.userIndex._id,
+            _id: this.userIndex._id
           })
           .then((response) => {
             console.log(this.userIndex._id);
