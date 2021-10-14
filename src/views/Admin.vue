@@ -26,11 +26,11 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
 
-          <v-list-item class="mt-2" exact :to="{ name: 'Admin' }">
+          <v-list-item class="mt-2" exact :to="{ name: 'Index' }">
             <v-list-item-icon>
-              <v-icon>mdi-key</v-icon>
+              <v-icon>mdi-cube-unfolded</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Admin</v-list-item-title>
+            <v-list-item-title>App Index</v-list-item-title>
           </v-list-item>
 
           <v-list-item class="mt-2" :to="{ name: 'ListProducts' }">
@@ -63,14 +63,14 @@
 
           <v-list-item class="mt-2" :to="{ name: 'Team' }">
             <v-list-item-icon>
-              <v-icon>mdi-microsoft-teams</v-icon>
+              <v-icon>mdi-human-male-board-poll</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Team</v-list-item-title>
           </v-list-item>
 
           <v-list-item class="mt-2" :to="{ name: 'About' }">
             <v-list-item-icon>
-              <v-icon>mdi-forum</v-icon>
+              <v-icon>mdi-information</v-icon>
             </v-list-item-icon>
             <v-list-item-title>About</v-list-item-title>
           </v-list-item>

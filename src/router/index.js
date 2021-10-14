@@ -16,13 +16,19 @@ const routes = [{
     component: Home
   },
   {
-    path: '/admin',
+    path: '/app',
     name: 'Admin',
     component: () => import( /* webpackChunkName: "Admin" */ '../views/Admin.vue'),
     meta: {
       requiresAuth: true
     },
-    children: [{
+    children: [
+      {
+        path: 'index',
+        name: 'Index',
+        component: () => import( /* webpackChunkName: "Index" */ '../views/Index.vue')
+      },
+      {
         path: 'users',
         name: 'Users',
         component: () => import( /* webpackChunkName: "Users" */ '../views/users/CRUD.vue'),

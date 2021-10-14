@@ -10,7 +10,8 @@
           'Team',
           'About',
           'ListProducts',
-          'Team'
+          'Team',
+          'Index'
         ].includes($route.name)
       "
     >
