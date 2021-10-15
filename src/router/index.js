@@ -5,20 +5,22 @@ import decode from 'jwt-decode';
 
 Vue.use(VueRouter)
 
-const routes = [{
-    path: '/login',
-    name: 'Login',
-    component: () => import( /* webpackChunkName: "login" */ '../views/Login.vue')
-  },
+const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import( /* webpackChunkName: "login" */ '../views/Login.vue')
+  },
+  
+  {
     path: '/app',
     name: 'Admin',
-    component: () => import( /* webpackChunkName: "Admin" */ '../views/Admin.vue'),
+    component: () => import( /* webpackChunkName: "admin" */ '../views/Admin.vue'),
     meta: {
       requiresAuth: true
     },
@@ -26,12 +28,12 @@ const routes = [{
       {
         path: 'index',
         name: 'Index',
-        component: () => import( /* webpackChunkName: "Index" */ '../views/Index.vue')
+        component: () => import( /* webpackChunkName: "index" */ '../views/Index.vue')
       },
       {
         path: 'users',
         name: 'Users',
-        component: () => import( /* webpackChunkName: "Users" */ '../views/users/CRUD.vue'),
+        component: () => import( /* webpackChunkName: "users" */ '../views/users/CRUD.vue'),
         meta: {
           requiresAdmin: true
         },
@@ -39,7 +41,7 @@ const routes = [{
       {
         path: 'categories',
         name: 'Categories',
-        component: () => import( /* webpackChunkName: "Categories" */ '../views/categories/CRUD.vue'),
+        component: () => import( /* webpackChunkName: "categories" */ '../views/categories/CRUD.vue'),
         meta: {
           requiresAdmin: true
         },
@@ -47,7 +49,7 @@ const routes = [{
       {
         path: 'products',
         name: 'Products',
-        component: () => import( /* webpackChunkName: "Products" */ '../views/products/CRUD.vue'),
+        component: () => import( /* webpackChunkName: "products" */ '../views/products/CRUD.vue'),
         meta: {
           requiresAdmin: true
         },
@@ -55,18 +57,18 @@ const routes = [{
       {
         path: 'listproducts',
         name: 'ListProducts',
-        component: () => import( /* webpackChunkName: "ListProducts" */ '../views/products/List.vue')
+        component: () => import( /* webpackChunkName: "listproducts" */ '../views/products/List.vue')
       },
       {
         path: 'team',
         name: 'Team',
-        component: () => import( /* webpackChunkName: "Team" */ '../views/Team.vue')
+        component: () => import( /* webpackChunkName: "team" */ '../views/Team.vue')
       },
 
       {
         path: 'about',
         name: 'About',
-        component: () => import( /* webpackChunkName: "About" */ '../views/About.vue')
+        component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
       },
     ]
   }
