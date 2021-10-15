@@ -5,19 +5,17 @@
       <v-toolbar-title> {{ titleApp }} </v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="pa-2">
-        <v-btn block color="black" @click="LogOut" dark>
-          <v-icon class="mx-2">mdi-logout</v-icon>Salir</v-btn
-          
+        <v-btn color="black" @click="LogOut">
+          <v-icon class="mx-2">mdi-logout</v-icon></v-btn
         >
       </div>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" temporary absolute>
-      <v-list nav dense> 
+      <v-list nav dense>
         <v-list-item-group
           v-model="group"
           active-class="green lighten-2--text text--lighten-2"
-          
         >
           <v-list-item exact :to="{ name: 'Home' }">
             <v-list-item-icon>

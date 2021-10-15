@@ -123,10 +123,10 @@
       </template>
 
       <template v-slot:item.actions="{ item }">
-        <v-icon color="green accent-4" class="mr-2" @click="editUser(item)">
+        <v-icon color="orange" class="mr-2" @click="editUser(item)">
           mdi-pencil
         </v-icon>
-        <v-icon color="red" @click="enabledUser(item)">
+        <v-icon :color="colorActive" @click="enabledUser(item)">
           mdi-account-reactivate
         </v-icon>
       </template>
@@ -183,6 +183,7 @@ export default {
     snackbar: false,
     text: "",
     color: "",
+    colorActive: "success",
 
     user: {
       _id: "",
@@ -198,7 +199,6 @@ export default {
       email: "",
       password: "",
       role: "Usuario",
-      state: "",
     },
   }),
 
@@ -230,16 +230,16 @@ export default {
         //Actualizar Usuarios
         axios
           .put('http://localhost:3000/api/users/update', {
-            nameUser: this.userIndex.nameUser,
-            email: this.userIndex.email,
-            password: this.userIndex.password,
-            role: this.userIndex.role,
-            state: this.userIndex.state,
+            nameUser: this.user.nameUser,
+            email: this.user.email,
+            password: this.user.password,
+            role: this.user.role,
+            state: this.user.state
           })
           .then((response) => {
             console.log(response);
             this.list();
-            this.color = "success";
+            this.color = "info";
             this.text = "El usuario se modificó correctamente!";
             this.snackbar = true;
           })
@@ -253,14 +253,14 @@ export default {
         //Crear usuarios
         axios
           .post('http://localhost:3000/api/users/add', {
-            nameUser: this.userIndex.nameUser,
-            email: this.userIndex.email,
-            password: this.userIndex.password,
-            role: this.userIndex.role,
-            state: this.userIndex.state,
+            nameUser: this.user.nameUser,
+            email: this.user.email,
+            password: this.user.password,
+            role: this.user.role,
+            state: this.user.state
           })
           .then((response) => {
-            console.log(this.userIndex._id);
+            console.log(this.user._id);
             console.log(response);
             this.list();
             this.color = "success";
@@ -301,24 +301,25 @@ export default {
     },
 
     enabledItemConfirm() {
-      if (this.userIndex.state === 1) {
+      if (this.user.state === 1) {
         //Deshabilitar usuarios (Disabled)
-        console.log(this.userIndex.state);
+        console.log(this.user.state);
         axios
           .put('http://localhost:3000/api/users/disabled', {
-            _id: this.userIndex._id
+            _id: this.user._id
           })
           .then((response) => {
             console.log(response);
-            console.log(this.userIndex._id);
+            console.log(this.user._id);
             this.list();
             this.color = "success";
             this.text = "Usuario deshabilitado con éxito!";
             this.snackbar = true;
+            this.colorActive = "red";
           })
           .catch((error) => {
             console.log(error);
-            console.log(this.userIndex._id);
+            console.log(this.user._id);
             this.color = "error";
             this.text = "Fallido!, Ha ocurrido un error.";
             this.snackbar = true;
@@ -327,19 +328,20 @@ export default {
         //Habilitar usuarios (Enabled)
         axios
           .put('http://localhost:3000/api/users/enabled', {
-            _id: this.userIndex._id
+            _id: this.user._id
           })
           .then((response) => {
-            console.log(this.userIndex._id);
+            console.log(this.user._id);
             console.log(response);
             this.list();
             this.color = "success";
             this.text = "Usuario habilitado con éxito!";
             this.snackbar = true;
+            this.colorActive = "success";
           })
           .catch((error) => {
             console.log(error);
-            console.log(this.userIndex._id);
+            console.log(this.user._id);
             this.color = "error";
             this.text = "Fallido!, Ha ocurrido un error.";
             this.snackbar = true;

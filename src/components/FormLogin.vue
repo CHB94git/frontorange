@@ -1,9 +1,8 @@
 <template>
-  <v-app id="inspire">
-    <v-container class="fill" fluid>
-      <v-row align="center" justify="center">
-        <v-col cols="12" sm="6" md="8" xs="4">
-          <v-card class="elevation-12 rounded-xl">
+    <v-container fluid>
+      <v-row align="center" justify="center" >
+        <v-col cols="12" lg="8" md="8" sm="8" xs="6">
+          <v-card class="elevation-12 rounded-xl mb-0">
             <v-img
               width="100%"
               height="150px"
@@ -78,7 +77,6 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-app>
 </template>
 
 
