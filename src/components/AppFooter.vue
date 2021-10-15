@@ -1,8 +1,7 @@
 <template>
   <v-footer class="footer" dark padless>
     <v-card-text class="py-2 white--text text-center">
-      {{ new Date().getFullYear() }} — <strong>OrangeApp </strong> &copy; Todos
-      los derechos reservados - Desarrollado por <strong>TeamNaranja</strong>
+      {{ new Date().getFullYear() }} — <strong>OrangeApp </strong> &copy; All rights reserved - Developed by: <strong>OrangeTeam</strong>
     </v-card-text>
   </v-footer>
 </template>

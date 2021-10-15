@@ -1,4 +1,5 @@
 <template>
+
   <v-card class="mx-auto overflow-hidden" height="100%">
     <v-app-bar color="orange accent-2" dark dense app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
@@ -78,7 +79,10 @@
 
     <router-view />
   </v-card>
+  
+
 </template>
+
 
 <script>
 import decode from "jwt-decode";

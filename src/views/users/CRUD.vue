@@ -126,7 +126,7 @@
         <v-icon color="orange" class="mr-2" @click="editUser(item)">
           mdi-pencil
         </v-icon>
-        <v-icon :color="colorActive" @click="enabledUser(item)">
+        <v-icon color="grey" @click="enabledUser(item)">
           mdi-account-reactivate
         </v-icon>
       </template>
@@ -183,8 +183,7 @@ export default {
     snackbar: false,
     text: "",
     color: "",
-    colorActive: "success",
-
+    
     user: {
       _id: "",
       nameUser: "",
@@ -198,7 +197,7 @@ export default {
       nameUser: "",
       email: "",
       password: "",
-      role: "Usuario",
+      role: "Usuario"
     },
   }),
 
@@ -237,7 +236,6 @@ export default {
             state: this.user.state
           })
           .then((response) => {
-            console.log(response);
             this.list();
             this.color = "info";
             this.text = "El usuario se modificó correctamente!";
@@ -257,7 +255,6 @@ export default {
             email: this.user.email,
             password: this.user.password,
             role: this.user.role,
-            state: this.user.state
           })
           .then((response) => {
             console.log(this.user._id);
@@ -303,23 +300,19 @@ export default {
     enabledItemConfirm() {
       if (this.user.state === 1) {
         //Deshabilitar usuarios (Disabled)
-        console.log(this.user.state);
         axios
           .put('http://localhost:3000/api/users/disabled', {
             _id: this.user._id
           })
           .then((response) => {
             console.log(response);
-            console.log(this.user._id);
             this.list();
             this.color = "success";
             this.text = "Usuario deshabilitado con éxito!";
             this.snackbar = true;
-            this.colorActive = "red";
           })
           .catch((error) => {
             console.log(error);
-            console.log(this.user._id);
             this.color = "error";
             this.text = "Fallido!, Ha ocurrido un error.";
             this.snackbar = true;
@@ -331,17 +324,13 @@ export default {
             _id: this.user._id
           })
           .then((response) => {
-            console.log(this.user._id);
-            console.log(response);
             this.list();
             this.color = "success";
             this.text = "Usuario habilitado con éxito!";
             this.snackbar = true;
-            this.colorActive = "success";
           })
           .catch((error) => {
             console.log(error);
-            console.log(this.user._id);
             this.color = "error";
             this.text = "Fallido!, Ha ocurrido un error.";
             this.snackbar = true;
