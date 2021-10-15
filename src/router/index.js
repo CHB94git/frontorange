@@ -12,13 +12,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: () => import( /* webpackChunkName: "login" */ '../views/Login.vue')
-  },
-  
-  {
-    path: '/app',
+    path: '/admin',
     name: 'Admin',
     component: () => import( /* webpackChunkName: "admin" */ '../views/Admin.vue'),
     meta: {
@@ -26,17 +20,9 @@ const routes = [
     },
     children: [
       {
-        path: 'index',
-        name: 'Index',
-        component: () => import( /* webpackChunkName: "index" */ '../views/Index.vue')
-      },
-      {
-        path: 'users',
-        name: 'Users',
-        component: () => import( /* webpackChunkName: "users" */ '../views/users/CRUD.vue'),
-        meta: {
-          requiresAdmin: true
-        },
+        path: 'about',
+        name: 'About',
+        component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
       },
       {
         path: 'categories',
@@ -44,7 +30,17 @@ const routes = [
         component: () => import( /* webpackChunkName: "categories" */ '../views/categories/CRUD.vue'),
         meta: {
           requiresAdmin: true
-        },
+        }},
+
+      {
+        path: 'index',
+        name: 'Index',
+        component: () => import( /* webpackChunkName: "index" */ '../views/Index.vue')
+      },
+      {
+        path: 'listproducts',
+        name: 'ListProducts',
+        component: () => import( /* webpackChunkName: "listproducts" */ '../views/products/List.vue')
       },
       {
         path: 'products',
@@ -55,23 +51,27 @@ const routes = [
         },
       },
       {
-        path: 'listproducts',
-        name: 'ListProducts',
-        component: () => import( /* webpackChunkName: "listproducts" */ '../views/products/List.vue')
-      },
-      {
         path: 'team',
         name: 'Team',
         component: () => import( /* webpackChunkName: "team" */ '../views/Team.vue')
       },
 
       {
-        path: 'about',
-        name: 'About',
-        component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
+        path: 'users',
+        name: 'Users',
+        component: () => import( /* webpackChunkName: "users" */ '../views/users/CRUD.vue'),
+        meta: {
+          requiresAdmin: true
+        },
       },
     ]
-  }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import( /* webpackChunkName: "login" */ '../views/Login.vue')
+  },
+  
 ]
 
 const router = new VueRouter({
