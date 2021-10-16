@@ -11,12 +11,11 @@
           'About',
           'ListProducts',
           'Team',
-          'Index'
+          'Index',
         ].includes($route.name)
       "
-    >
-      <navigation />
-    </header>
+    ></header>
+    <navigation />
     <v-main>
       <router-view />
     </v-main>
@@ -25,8 +24,8 @@
 </template>
 
 <script>
-import AppFooter from "./components/AppFooter.vue";
 import Navigation from "./components/Navigation.vue";
+import AppFooter from "./components/AppFooter.vue";
 
 export default {
   components: { Navigation, AppFooter },

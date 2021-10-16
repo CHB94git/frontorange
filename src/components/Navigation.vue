@@ -7,7 +7,7 @@
       :to="{ name: 'Login' }">Login</router-link> 
       <router-link 
         v-else
-      :to="{ name: 'Index' }">App Index</router-link>
+      :to="{ name: 'Admin' }">Admin</router-link>
     </div>
   </v-container>
 </template>
